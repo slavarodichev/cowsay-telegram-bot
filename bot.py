@@ -55,10 +55,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         quote = random.choice(QUOTES)
 
         cow = subprocess.run(
-            ["cowsay", quote],
+            ["/usr/games/cowsay", quote],
             capture_output=True,
             text=True
         ).stdout
+
 
 
         await context.bot.send_message(
