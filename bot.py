@@ -1,5 +1,5 @@
 import random
-import cowsay
+from neo_cowsay import cowsay
 import os
 
 from telegram import Update
@@ -50,17 +50,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     print("Сообщений:", message_counter)
 
-    # каждые 30 сообщений
     if message_counter % 30 == 0:
 
         quote = random.choice(QUOTES)
 
-        cow = cowsay.get_output_string("cow", quote)
+        cow = cowsay(quote)
 
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
-            text=f"```\n{cow}\n```",
-            parse_mode="Markdown"
+            text=cow
         )
 
 
