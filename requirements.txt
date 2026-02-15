@@ -1,2 +1,2 @@
 python-telegram-bot
-git+https://github.com/Code-Hex/neo-cowsay.git
+cowsay
