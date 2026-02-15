@@ -1,5 +1,5 @@
 import random
-from neo_cowsay import cowsay
+import subprocess
 import os
 
 from telegram import Update
@@ -54,7 +54,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         quote = random.choice(QUOTES)
 
-        cow = cowsay(quote)
+        cow = subprocess.run(
+            ["cowsay", quote],
+            capture_output=True,
+            text=True
+        ).stdout
+
 
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
