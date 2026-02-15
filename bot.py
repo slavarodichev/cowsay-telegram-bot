@@ -1,5 +1,6 @@
 import random
 import cowsay
+import os
 
 from telegram import Update
 from telegram.ext import (
@@ -10,7 +11,7 @@ from telegram.ext import (
 )
 
 # ВСТАВЬ СЮДА НОВЫЙ ТОКЕН ОТ BOTFATHER
-TOKEN = "8515555003:AAE1Apz6dQmvFgxTSw1So6NbeOAqSwEstuw"
+TOKEN = os.getenv("TOKEN")
 
 
 # временные цитаты (потом заменим на твои)
