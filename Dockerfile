@@ -1,11 +1,15 @@
 FROM python:3.11-slim
 
+# ставим cowsay / neo-cowsay
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y cowsay
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-
-RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["python", "bot.py"]
